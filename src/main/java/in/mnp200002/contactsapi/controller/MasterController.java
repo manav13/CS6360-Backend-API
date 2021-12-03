@@ -24,7 +24,7 @@ import in.mnp200002.contactsapi.service.ContactService;
 import in.mnp200002.contactsapi.service.DateService;
 import in.mnp200002.contactsapi.service.PhoneService;
 
-//@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*")
 @RestController
 public class MasterController {
 	
@@ -52,13 +52,13 @@ public class MasterController {
 		this.dateService = dateService;
 	}
 	
-//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/contacts")
 	public List<Contact> getContacts() {
 		return contactService.getContacts();
 	}
 	
-//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/contacts/{id}")
 	public SingleContact getSingleContact(@PathVariable(value="id") Integer id) {
 		
@@ -71,25 +71,25 @@ public class MasterController {
 		return person;
 	}
 	
-//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "contacts/address/{id}")
 	public List<Address> getAddress(@PathVariable(value="id") Integer id) {
 		return addressService.getAddress(id);
 	}
 	
-//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "contacts/phone/{id}")
 	public List<Phone> getPhone(@PathVariable(value="id") Integer id) {
 		return phoneService.getPhone(id);
 	}
 	
-//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "contacts/date/{id}")
 	public List<Date> getDate(@PathVariable(value="id") Integer id) {
 		return dateService.getDate(id);
 	}
 	
-//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.POST, value="contacts/addContact")
 	public void addPerson(@RequestBody Person person) {
 		Integer contactId = contactService.addContact(person.getContact());
@@ -98,7 +98,7 @@ public class MasterController {
 		dateService.addDate(person.getDate(), contactId);
 	}
 	
-//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.PUT, value="contacts/updateContact/{id}")
 	public void updatePerson(@RequestBody Person person, @PathVariable(value="id") Integer contact_id) {
 		contactService.updateContact(person.getContact(), contact_id);
@@ -107,7 +107,7 @@ public class MasterController {
 		dateService.updateDate(person.getDate(), contact_id);
 	}
 	
-//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping(method = RequestMethod.DELETE, value="contacts/deleteContact/{id}")
 	public void deletePerson(@PathVariable(value="id") Integer contact_id) {
 		addressService.deleteAddress(contact_id);
